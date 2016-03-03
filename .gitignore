@@ -1,0 +1,7 @@
+.DS_Store
+*.pyc
+*._*
+.vim/bundle
+.vim/sessions
+.vim/view
+
