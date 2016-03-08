@@ -73,12 +73,17 @@
     endif
 
     " Setting up the directories {
-        "set backup                  " Backups are nice ...
-        if has('persistent_undo')
-            set undofile                " So is persistent undo ...
-            set undolevels=1000         " Maximum number of changes that can be undone
-            set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
-        endif
+        set nobackup                   " Backups are no longer used ...
+        set undofile
+        set undodir=~/.undodir         " Put the backup into .undodir
+
+        "set nobackup                  " Backups are nice ...
+        "set noundofile
+ "       if has('persistent_undo')
+ "           set undofile                " So is persistent undo ...
+ "           set undolevels=1000         " Maximum number of changes that can be undone
+ "           set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
+ "       endif
 
         " To disable views add the following to your .vimrc.before.local file:
         "   let g:spf13_no_views = 1
