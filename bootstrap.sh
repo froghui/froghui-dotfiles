@@ -20,6 +20,7 @@ app_dir="$HOME/.froghui-dotfiles"
 app_symlinks_dir=".froghui-dotfiles"
 debug_mode='0'
 [ -z "$VUNDLE_URI" ] && VUNDLE_URI="https://github.com/gmarik/vundle.git"
+[ -z "$MYZSH_URI" ] && MYZSH_URI="https://github.com/robbyrussell/oh-my-zsh.git"
 
 ############################  BASIC SETUP TOOLS
 msg() {
@@ -92,6 +93,10 @@ upgrade_repo() {
           cd "$HOME/.vim/bundle/vundle" &&
           git pull origin master
       fi
+      if [ "$1" = "myzsh" ]; then
+          cd "$HOME/.oh-my-zsh" &&
+          git pull origin master
+      fi
 
       ret="$?"
       success "$2"
@@ -109,12 +114,22 @@ clone_vundle() {
     debug
 }
 
+clone_myzsh() {
+    if [ ! -e "$HOME/.oh-my-zsh" ]; then
+        git clone $MYZSH_URI "$HOME/.oh-my-zsh"
+    else
+        upgrade_repo "myzsh"   "Successfully updated myzsh"
+    fi
+    ret="$?"
+    success "$1"
+    debug
+}
+
 create_symlinks() {
     msg "current dir in create_symlinks is `pwd`"
-    endpath="$app_dir"
 
-    if [ ! -d "$endpath/.vim/bundle" ]; then
-        mkdir -p "$endpath/.vim/bundle"
+    if [ ! -d "$app_dir/.vim/bundle" ]; then
+        mkdir -p "$app_dir/.vim/bundle"
     fi
 
     cd $HOME
@@ -123,6 +138,8 @@ create_symlinks() {
     lnif "$app_symlinks_dir/.vim"                ".vim"
     lnif "$app_symlinks_dir/.bash_profile"       ".bash_profile"
     lnif "$app_symlinks_dir/.bashrc"             ".bashrc"
+    lnif "$app_symlinks_dir/.oh-my-zsh"          ".oh-my-zsh"
+    lnif "$app_symlinks_dir/.zshrc"              ".zshrc"
     cd -
 
     ret="$?"
@@ -150,20 +167,23 @@ setup_vundle() {
 ############################ MAIN()
 variable_set "$HOME"
 program_exists "vim" "To install $app_name you first need to install Vim."
+program_exists "zsh" "To install $app_name you first need to install Zsh."
 
 do_backup   "Your old vim stuff has a suffix now and looks like .vim.`date +%Y%m%d%S`" \
         "$HOME/.vim" \
         "$HOME/.vimrc" \
         "$HOME/.gvimrc" \
         "$HOME/.bash_profile" \
-        "$HOME/.bashrc"
+        "$HOME/.bashrc" \
+        "$HOME/.zshrc
 
 create_symlinks "Setting up vim symlinks"
 
 msg " current dir is `pwd`"
 
 clone_vundle    "Successfully cloned vundle"
-
 setup_vundle    "Now updating/installing plugins using Vundle"
+
+clone_myzsh     "Successfully cloned myzsh"
 
 msg             "\n Install $app_name completed."

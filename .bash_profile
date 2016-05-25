@@ -32,12 +32,18 @@ alias fgrep='fgrep --color'
 alias jj='cd ~/Code/alipay'
 alias li='cd ~/Code/linux/linux-2.6.32-431.29.2.el6'
 alias fr='cd ~/Code/froghui-github'
+alias golang='cd ~/Code/go'
 
 # ls dircolors using solarized dark
 eval `gdircolors -b $HOME/Code/tools/dircolors-solarized/dircolors.ansi-dark`
 alias ls='ls -F --show-control-chars --color=auto'
 alias ll='ls -al -F --show-control-chars --color=auto'
 #export CLICOLOR=1
+
+# Sofa
+export SOFA_HOME="/usr/local/sofa"
+export PATH="$SOFA_HOME:$PATH"
+source /usr/local/sofa/resources/completion/bash_autocomplete
 
 # bash completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
