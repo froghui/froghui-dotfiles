@@ -37,6 +37,7 @@ echo "Reading ~/.bashrc"
 # Make a simple command-line prompt:  bash-$
 
 # PS1=$'\[\e]2;[bash]   \h::\]$PWD\[\a\]\[\e]1;\]$(basename "$(dirname "$PWD")")/\W\[\a\]bash@\w\$ 🚀  '
-PS1=$'\u@\w$ 🚀  '
+PS1=$'\u@\w$ \xF0\x9F\x9A\x80 '
+#PS1=$'\u@\w$ 🚀  '
 
 

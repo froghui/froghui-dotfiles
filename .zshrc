@@ -7,7 +7,7 @@ export ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="powerlevel9k/powerlevel9k" # (this is one of the fancy ones)
-ZSH_THEME="agnoster"
+ZSH_THEME="myagnoster/agnoster"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -85,6 +85,7 @@ export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 export LANGUAGE="en_US.UTF-8"
 
+echo "reading .zshrc from $SHELL"
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
@@ -110,9 +111,10 @@ export LANGUAGE="en_US.UTF-8"
 alias grep='grep --color'
 alias egrep='egrep --color'
 alias fgrep='fgrep --color'
+alias j='cd ~/Code/alipay/apcontainersrv'
 alias jj='cd ~/Code/alipay'
 alias li='cd ~/Code/linux/linux-2.6.32-431.29.2.el6'
-alias fr='cd ~/Code/froghui-github'
+alias f='cd ~/Code/froghui-github'
 alias golang='cd ~/Code/go'
 
 # ls dircolors using solarized dark
