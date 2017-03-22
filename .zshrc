@@ -51,13 +51,15 @@ DISABLE_AUTO_UPDATE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx ruby)
+plugins=(git osx ruby autojump)
 
 # User configuration
 # Java
 export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
-export M2_HOME="/usr/local/apache-maven-3.2.5"
+export M2_HOME="/usr/local/apache-maven-3.3.9"
 export PATH="$M2_HOME/bin:$PATH"
+export ANT_HOME="/usr/local/apache-ant-1.9.7"
+export PATH="$ANT_HOME/bin:$PATH"
 
 # Golang
 export GOPATH="$HOME/Code/go"
@@ -75,6 +77,10 @@ export MANPATH="/usr/local/homebrew/opt/coreutils/libexec/gnuman:$MANPATH"
 export SOFA_HOME="/usr/local/sofa"
 export PATH="$SOFA_HOME:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
+
+# OSSCMD
+export OSS_HOME="/usr/local/oss"
+export PATH="$OSS_HOME:$PATH"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -111,8 +117,7 @@ echo "reading .zshrc from $SHELL"
 alias grep='grep --color'
 alias egrep='egrep --color'
 alias fgrep='fgrep --color'
-alias j='cd ~/Code/alipay/apcontainersrv'
-alias jj='cd ~/Code/alipay'
+alias jj='cd ~/Code/alipay/antcloud-caas/apcontainersrv'
 alias li='cd ~/Code/linux/linux-2.6.32-431.29.2.el6'
 alias f='cd ~/Code/froghui-github'
 alias golang='cd ~/Code/go'
@@ -120,3 +125,6 @@ alias golang='cd ~/Code/go'
 # ls dircolors using solarized dark
 eval `gdircolors -b $HOME/Code/tools/dircolors-solarized/dircolors.ansi-dark`
 alias ll='ls -al'
+
+# autojump
+[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
