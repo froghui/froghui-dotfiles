@@ -55,11 +55,13 @@ plugins=(git osx ruby autojump)
 
 # User configuration
 # Java
-export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 export M2_HOME="/usr/local/apache-maven-3.3.9"
 export PATH="$M2_HOME/bin:$PATH"
 export ANT_HOME="/usr/local/apache-ant-1.9.7"
 export PATH="$ANT_HOME/bin:$PATH"
+export GRADLE_HOME="/usr/local/gradle-4.2"
+export PATH="$GRADLE_HOME/bin:$PATH"
 
 # Golang
 export GOPATH="$HOME/Code/go"
