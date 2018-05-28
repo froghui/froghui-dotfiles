@@ -116,6 +116,9 @@ clone_vundle() {
 
 clone_myzsh() {
     if [ ! -e "$HOME/.oh-my-zsh" ]; then
+        cd $HOME
+        lnif "$app_symlinks_dir/.oh-my-zsh"   ".oh-my-zsh"
+        cd -
         git clone $MYZSH_URI "$HOME/.oh-my-zsh"
     else
         upgrade_repo "myzsh"   "Successfully updated myzsh"
@@ -138,7 +141,6 @@ create_symlinks() {
     lnif "$app_symlinks_dir/.vim"                ".vim"
     lnif "$app_symlinks_dir/.bash_profile"       ".bash_profile"
     lnif "$app_symlinks_dir/.bashrc"             ".bashrc"
-    lnif "$app_symlinks_dir/.oh-my-zsh"          ".oh-my-zsh"
     lnif "$app_symlinks_dir/.zshrc"              ".zshrc"
     cd -
 
@@ -175,14 +177,14 @@ do_backup   "Your old vim stuff has a suffix now and looks like .vim.`date +%Y%m
         "$HOME/.gvimrc" \
         "$HOME/.bash_profile" \
         "$HOME/.bashrc" \
-        "$HOME/.zshrc
+        "$HOME/.zshrc"
 
-create_symlinks "Setting up vim symlinks"
+# create_symlinks "Setting up vim symlinks"
 
-msg " current dir is `pwd`"
+# msg " current dir is `pwd`"
 
-clone_vundle    "Successfully cloned vundle"
-setup_vundle    "Now updating/installing plugins using Vundle"
+# clone_vundle    "Successfully cloned vundle"
+# setup_vundle    "Now updating/installing plugins using Vundle"
 
 clone_myzsh     "Successfully cloned myzsh"
 

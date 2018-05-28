@@ -1,16 +1,16 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="robbyrussell"
+#ZSH_THEME="agnoster"
 #ZSH_THEME="powerlevel9k/powerlevel9k" # (this is one of the fancy ones)
 ZSH_THEME="myagnoster/agnoster"
 
 # Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+## CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
@@ -52,28 +52,28 @@ DISABLE_AUTO_UPDATE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git osx ruby autojump)
-
+fpath=(/usr/local/share/zsh-completions $fpath)
 # User configuration
 # Java
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
-export M2_HOME="/usr/local/apache-maven-3.3.9"
+export M2_HOME="/usr/local/apache-maven-3.5.2"
 export PATH="$M2_HOME/bin:$PATH"
-export ANT_HOME="/usr/local/apache-ant-1.9.7"
+export ANT_HOME="/usr/local/apache-ant-1.10.1"
 export PATH="$ANT_HOME/bin:$PATH"
-export GRADLE_HOME="/usr/local/gradle-4.2"
+export GRADLE_HOME="/usr/local/gradle-4.4.1"
 export PATH="$GRADLE_HOME/bin:$PATH"
 
 # Golang
 export GOPATH="$HOME/Code/go"
 export PATH="$GOPATH/bin:$PATH"
 
+# homebrew
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/Homebrew/bin:$PATH"
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+
 # Ruby
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
-
-# homebrew
-export PATH="/usr/local/homebrew/opt/coreutils/libexec/gnubin:/usr/local/homebrew/bin:$PATH"
-export MANPATH="/usr/local/homebrew/opt/coreutils/libexec/gnuman:$MANPATH"
 
 # Sofa
 export SOFA_HOME="/usr/local/sofa"
@@ -122,11 +122,12 @@ alias fgrep='fgrep --color'
 alias jj='cd ~/Code/alipay/antcloud-caas/apcontainersrv'
 alias li='cd ~/Code/linux/linux-2.6.32-431.29.2.el6'
 alias f='cd ~/Code/froghui-github'
-alias golang='cd ~/Code/go'
 
 # ls dircolors using solarized dark
 eval `gdircolors -b $HOME/Code/tools/dircolors-solarized/dircolors.ansi-dark`
-alias ll='ls -al'
+alias ls='ls -F --show-control-chars --color=auto'
+alias ll='ls -al -F --show-control-chars --color=auto'
+#alias ll='ls -al'
 
 # autojump
-[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
+[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
